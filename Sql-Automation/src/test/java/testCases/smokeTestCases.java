@@ -34,6 +34,7 @@ public class smokeTestCases extends Hooks {
 
     @Test(priority = 4, description = "Dashboard -> Active Licensed Users")
     public void activeLicensedUsers() throws Exception {
+        
         commonModule.loginAndConnect();
         dashboardModule.dashboardPage();
         WaitUtil.waitForPageLoad();
