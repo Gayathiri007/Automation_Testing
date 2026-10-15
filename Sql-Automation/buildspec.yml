@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto19
+    commands:
+      - echo Installing Maven dependencies...
+      - mvn -f Sql-Automation/pom.xml clean install -DskipTests
+  build:
+    commands:
+      - echo Running TestNG tests in headless mode...
+      - mvn -f Sql-Automation/pom.xml test -Dheadless=true -DsuiteFile=TestNG.xml
+#      - echo Uploading reports to S3...
+#      - aws s3 cp Sql-Automation/reports/ s3://codepipeline-us-east-1-989146000227/${CODEBUILD_BUILD_ID}/ --recursive
+
+artifacts:
+  files:
+    - Sql-Automation/reports/**/*
+  discard-paths: yes
