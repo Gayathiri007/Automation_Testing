@@ -19,6 +19,7 @@ public class newConnectionModule extends BasePage {
      * Clicks the New Connection (+) icon and fails the test if the popup does not open.
      */
     public static void openNewConnectionPopup() {
+        //resuable action
         ReusableActions.click(newConnectionPageObjects.newConnectionIcon);
         WaitUtil.waitForElementToBeLocated(newConnectionPageObjects.popupTitle);
         Assert.assertTrue(driver.findElement(By.xpath(newConnectionPageObjects.popupTitle)).isDisplayed(),
